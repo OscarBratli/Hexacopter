@@ -2,18 +2,7 @@
 <robot name="robot_arm" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find my_hexacopter)/urdf/gazebo_control.xacro"/>
-  <!--<xacro:include filename="$(find my_hexacopter)/urdf/sensors.xacro"/>
-  <xacro:include filename="$(find my_hexacopter)/urdf/my_hexacopter_simple.xacro"/>-->
-
-
-  <!-- Fixed Joint to Connect Base Link to Hexacopter 
-  <joint name="hexacopter_body_to_base_link" type="fixed">
-    <parent link="hexacopter_body"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0" rpy="3.14 0 0"/>
-  </joint>-->
-
-  <!-- Properties -->
+  
   <xacro:property name="link_length" value="0.25"/>
   <xacro:property name="joint_radius" value="0.05"/>
   <xacro:property name="link_radius" value="0.03"/>
@@ -21,7 +10,7 @@
   <xacro:property name="link_mass" value="1.0"/>
 
 
-<!-- World Link Definition -->
+
   <link name="world">
     <inertial>
       <mass value="0.0"/>
@@ -30,14 +19,14 @@
     </inertial>
   </link>
 
-  <!-- Fixed Joint to Attach Base Link to World -->
+ 
 <joint name="base_to_world" type="fixed">
   <parent link="world"/>
   <child link="base_link"/>
   <origin xyz="0 0 0" rpy="0 0 0"/>
 </joint>
 
-  <!-- Base Link -->
+ 
   <link name="base_link">
     <visual>
       <origin xyz="0 0 ${0.1 / 2}" rpy="0 0 0"/>
@@ -61,7 +50,7 @@
     </inertial>
   </link>
 
-  <!-- Joint 1 -->
+ 
   <joint name="joint_1" type="revolute">
     <parent link="base_link"/>
     <child link="link_1"/>
@@ -71,7 +60,7 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
-  <!-- Link 1 -->
+
   <link name="link_1">
     <visual>
       <origin xyz="0 0 ${link_length / 2}" rpy="0 0 0"/>
@@ -95,7 +84,7 @@
     </inertial>
   </link>
 
-  <!-- Joint 2 -->
+ 
   <joint name="joint_2" type="revolute">
     <parent link="link_1"/>
     <child link="link_2"/>
@@ -105,7 +94,7 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
-  <!-- Link 2 -->
+
   <link name="link_2">
     <visual>
       <origin xyz="0 0 ${link_length / 2}" rpy="0 0 0"/>
@@ -129,7 +118,7 @@
     </inertial>
   </link>
 
-  <!-- Joint 3 -->
+
   <joint name="joint_3" type="revolute">
     <parent link="link_2"/>
     <child link="link_3"/>
@@ -139,7 +128,7 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
-  <!-- Link 3 -->
+ 
   <link name="link_3">
     <visual>
       <origin xyz="0 0 ${link_length / 2}" rpy="0 0 0"/>
@@ -163,7 +152,7 @@
     </inertial>
   </link>
 
-  <!-- Gripper Joint -->
+
   <joint name="gripper_joint" type="revolute">
     <parent link="link_3"/>
     <child link="gripper"/>
@@ -173,7 +162,7 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
-  <!-- Gripper Link -->
+
   <link name="gripper">
     <visual>
       <origin xyz="0 0 ${gripper_length / 2}" rpy="0 0 0"/>
@@ -197,7 +186,7 @@
     </inertial>
   </link>
 
-  <!-- Transmissions -->
+
   <transmission name="transmission_joint_1">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="joint_1">
