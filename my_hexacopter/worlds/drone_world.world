@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="drone_world">
+    <!-- Physics and Lighting Settings -->
+    <physics type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+    </scene>
+    <gravity>0 0 -9.8</gravity>
+
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Sun -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Traffic Cones -->
+    <include>
+      <uri>model://construction_cone</uri>
+      <pose>1 2 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://construction_cone</uri>
+      <pose>-2 -1 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://construction_cone</uri>
+      <pose>3 -3 0 0 0 0</pose>
+    </include>
+
+    <!-- Trees -->
+    <include>
+      <uri>model://simple_tree</uri>
+      <pose>-4 4 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://simple_tree</uri>
+      <pose>5 -5 0 0 0 0</pose>
+    </include>
+  </world>
+</sdf>
